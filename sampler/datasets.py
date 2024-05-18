@@ -14,21 +14,9 @@ def pre_process(path, size=64):
         ])
     
     x = Image.open(path) 
-    
-    # Crop the center of the image
-    w, h = x.size 
-    crop_size = min(w, h)
-
-    left    = (w - crop_size)/2
-    top     = (h - crop_size)/2
-    right   = (w + crop_size)/2
-    bottom  = (h + crop_size)/2
-
-    # Crop the center of the image
-    x = x.crop((left, top, right, bottom))
 
     # resize the image
-    x = x.resize((64, 64))    
+    x = x.resize((size, size))    
     
     x = transform(x)
 
@@ -37,7 +25,7 @@ def pre_process(path, size=64):
 class CelebA_Dataset(torch.utils.data.Dataset):
     def __init__(self, mode=0, dataset='celeba'):
         #filter for those in the training set
-        self.datums = pd.read_csv('/home/rmapaij/sae_bench/beta-tcvae/sceleba.csv')
+        self.datums = pd.read_csv('/home/rmapaij/sae_bench/beta-tcvae/celeba.csv')
         self.datums = self.datums[self.datums['set'] == mode]  
         #instantiate the base directory 
         self.base = '../img_align_celeba' 
