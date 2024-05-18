@@ -71,7 +71,7 @@ class EvalCeleba_Test():
 
         total_iters  = length + 60 if self.args.check_val else length 
         
-        classifier = nn.Linear(128, 40).to(self.args.device)  
+        classifier = nn.Linear(512, 40).to(self.args.device)  
         optimizer = Adam(classifier.parameters(), lr=0.001)
         # define loss function
         loss_fn = nn.BCEWithLogitsLoss(reduction='none')
