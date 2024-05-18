@@ -28,6 +28,7 @@ args = parser.parse_args()
 class EvalCeleba_Test():
     def __init__(self, args):
         self.args = args    
+        
         if args.ext != 'ffhq': 
                 config_path = '/home/rmapaij/sae_bench/PDAE/celeba64/config.yml'
                 checkpoint_path = '/home/rmapaij/sae_bench/PDAE/celeba64/checkpoint.pt'
@@ -36,7 +37,7 @@ class EvalCeleba_Test():
                 checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))
                 encoder.load_state_dict(checkpoint['ema_encoder'])
                 encoder.eval() 
-                self.encoder = encoder  
+                self.encoder = encoder.to(args.device)
                 
         else:
                 config_path = '/home/rmapaij/sae_bench/PDAE/ffhq128/config.yml'
@@ -46,7 +47,7 @@ class EvalCeleba_Test():
                 checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))
                 encoder.load_state_dict(checkpoint['ema_encoder'])
                 encoder.eval() 
-                self.encoder = encoder  
+                self.encoder = encoder.to(args.device) 
         
         wandb.init(project="HSpace-SAEs", entity="a-ijishakin",
                         name=f'PDAE testing {args.ext}')
