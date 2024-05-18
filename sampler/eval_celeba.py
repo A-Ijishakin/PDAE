@@ -1,4 +1,6 @@
 import wandb 
+import sys 
+sys.path.append('../') 
 import torch 
 import glob 
 import numpy as np 
