@@ -29,8 +29,8 @@ class EvalCeleba_Test():
     def __init__(self, args):
         self.args = args    
         if args.ext != 'ffhq': 
-                config_path = 'celeba64/config.yml'
-                checkpoint_path = 'celeba64/checkpoint.pt'
+                config_path = '/home/rmapaij/sae_bench/PDAE/celeba64/config.yml'
+                checkpoint_path = '/home/rmapaij/sae_bench/PDAE/celeba64/checkpoint.pt'
                 model_config = load_yaml(config_path) 
                 encoder = getattr(encoder_module, model_config["encoder_config"]["model"], None)(**model_config["encoder_config"])
                 checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))
@@ -39,8 +39,8 @@ class EvalCeleba_Test():
                 self.encoder = encoder  
                 
         else:
-                config_path = 'ffhq128/config.yml'
-                checkpoint_path = 'ffhq128/checkpoint.pt'
+                config_path = '/home/rmapaij/sae_bench/PDAE/ffhq128/config.yml'
+                checkpoint_path = '/home/rmapaij/sae_bench/PDAE/ffhq128/checkpoint.pt'
                 model_config = load_yaml(config_path) 
                 encoder = getattr(encoder_module, model_config["encoder_config"]["model"], None)(**model_config["encoder_config"])
                 checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))
