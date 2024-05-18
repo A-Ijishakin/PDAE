@@ -37,7 +37,7 @@ def pre_process(path, size=64):
 class CelebA_Dataset(torch.utils.data.Dataset):
     def __init__(self, mode=0, dataset='celeba'):
         #filter for those in the training set
-        self.datums = pd.read_csv('celeba.csv')
+        self.datums = pd.read_csv('/home/rmapaij/sae_bench/beta-tcvae/sceleba.csv')
         self.datums = self.datums[self.datums['set'] == mode]  
         #instantiate the base directory 
         self.base = '../img_align_celeba' 
