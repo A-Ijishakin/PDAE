@@ -41,10 +41,9 @@ class EvalCeleba_Test():
                 self.encoder = encoder.to(args.device)
                 
         else:
-                config_path = '/home/rmapaij/sae_bench/PDAE/ffhq128/config.yml'
-                checkpoint_path = '/home/rmapaij/sae_bench/PDAE/ffhq128/checkpoint.pt'
+                config_path = '/home/rmapaij/sae_bench/PDAE/FFHQ/config.yml'
+                checkpoint_path = '/home/rmapaij/sae_bench/PDAE/FFHQ/checkpoint.pt'
                 model_config = load_yaml(config_path) 
-                breakpoint()
                 encoder = getattr(encoder_module, model_config["encoder_config"]["model"], None)(**model_config["encoder_config"])
                 checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))
                 encoder.load_state_dict(checkpoint['ema_encoder'])

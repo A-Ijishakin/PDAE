@@ -246,7 +246,7 @@ class RepresentationLearningTrainer(BaseTrainer):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--config_path', type=str, required=True)
+    parser.add_argument('--config_path', type=str, default=)
     parser.add_argument('--run_path', type=str, required=True)
     parser.add_argument('--resume', type=str, default='', help='resume from checkpoint')
 
